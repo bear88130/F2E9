@@ -1,0 +1,66 @@
+$normal-pink:#FF0093;
+$dark-pink:#D10079;
+$light-purple:#8000FF !default;
+$normal-purple:#6900D1 !default;
+$dark-purple:#35006A !default;
+body {
+  margin-top: 10vh;
+  font-family: Microsoft JhengHei;
+  font-size: 16px;
+  /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#1d004b+0,070011+50,06000f+100 */
+  background: rgb(29, 0, 75);
+  /* Old browsers */
+  background: -moz-linear-gradient(left, rgba(29, 0, 75, 1) 0%, rgba(7, 0, 17, 1) 50%, rgba(6, 0, 15, 1) 100%);
+  /* FF3.6-15 */
+  background: -webkit-linear-gradient(left, rgba(29, 0, 75, 1) 0%, rgba(7, 0, 17, 1) 50%, rgba(6, 0, 15, 1) 100%);
+  /* Chrome10-25,Safari5.1-6 */
+  background: linear-gradient(to right, rgba(29, 0, 75, 1) 0%, rgba(7, 0, 17, 1) 50%, rgba(6, 0, 15, 1) 100%);
+  /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#1d004b', endColorstr='#06000f', GradientType=1);
+  /* IE6-9 */
+}
+
+#m_title {
+  color: $normal-pink;
+  font-family: Roboto;
+  font-size: 48px;
+  font-weight: 900;
+  font-style: italic;
+}
+
+.purple_text {
+  background-color: $normal-purple;
+  color: black;
+  width: 150px;
+  text-align: center;
+  margin-top: 24px;
+}
+
+.rank_title {
+  span {
+    font-size: 36px;
+    color: white;
+    border-bottom: 5px solid $normal-purple;
+    margin-top: 12px;
+  }
+}
+
+.rank_img {
+  img {
+    width: 300px;
+    margin-top: 24px;
+  }
+}
+
+.m_skill_block {
+  .icon {
+    padding-top: 4px;
+    text-align: center;
+    background-color: rgba($color: #ffffff, $alpha: .1);
+    cursor: pointer;
+  }
+  .point {
+    text-align: center;
+    color: white;
+  }
+}
