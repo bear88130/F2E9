@@ -1,12 +1,12 @@
 <!--The content below is only a placeholder and can be replaced.-->
 
 <div class="row">
-  <div class="col-md-4 col-12">
+  <div class="col-lg-4 col-12">
     <h1 id="m_title">FRONT-END
       <br> SKILL TREE</h1>
-    <div class="purple_text">CURRENT RANK</div>
+    <div class="purple_text">等級</div>
     <div class='rank_title'>
-      <span>FRONT-END MASTER</span>
+      <span>{{rankLevel}}</span>
     </div>
     <div class="rank_img">
       <img src="../img/img-ship-beginner.png" alt="">
@@ -14,76 +14,223 @@
   </div>
 
 
-  <div class="col-md-4 col-12">
+  <div class="col-lg-5 col-12">
     <div class="row">
       <div class="col-md-3 col-12 arrow">
         <img src="../img/img-planet-basics.png" alt="Basic Skill">
       </div>
       <div class="offset-md-1 col-md-8 col-12">
         <div class="row">
-          <div class="col-md-4 col-2 m_skill_block">
-            <div class="icon" (click)='showSkill($event.target)'  title='基本技能'>
-                <i class="material-icons">
+          <div class="col-md-4 col-3 m_skill_block">
+            <div class="icon canChoice" (click)='showSkill($event.target)'  title='基本技能'>
+                <i class="material-icons" title='基本技能'>
                     category
                     </i>
             </div>
             <div class="point">0 / 3</div>
           </div>
+          <div class="col-md-4 col-3 m_skill_block">
+            <div class="icon ingChoice" (click)='showGroupUp()' [class.ingChoice]='IsGroup'  title='基本工具'>
+                <i class="material-icons" title='基本工具'>
+                    build
+                </i>
+            </div>
+            <div class="point">0 / 3</div>
+          </div>
+          <div class="col-12 blank"> &nbsp;</div>
         </div>
       </div>
     </div>
 
-    <div class="row">
+    <div class="row" [class.noChoice]="true">
       <div class="col-md-3 col-12 arrow">
         <img src="../img/img-planet-css.png" alt="">
       </div>
-      <div class="offset-md-1 col-md-8 col-12"></div>
+      <div class="offset-md-1 col-md-8 col-12">
+        <div class="row">
+          <div class="col-md-4 col-3 m_skill_block">
+            <div class="icon" (click)='showSkill($event.target)'  title='框架'>
+                <i class="material-icons">
+                  flip_to_front
+                    </i>
+            </div>
+            <div class="point">0 / 3</div>
+          </div>
+          <div class="col-md-4 col-3 m_skill_block">
+            <div class="icon" (click)='showSkill($event.target)'  title='預處理器'>
+                <i class="material-icons">
+                  view_quilt
+                    </i>
+            </div>
+            <div class="point">0 / 3</div>
+          </div>
+          <div class="col-md-4 col-3 m_skill_block">
+            <div class="icon" (click)='showSkill($event.target)'  title='架構'>
+                <i class="material-icons">
+                  developer_board
+                    </i>
+            </div>
+            <div class="point">0 / 3</div>
+          </div>
+          <div class="col-md-4 col-3 m_skill_block">
+            <div class="icon" (click)='showSkill($event.target)'  title='RWD'>
+                <i class="material-icons">
+                  devices
+                    </i>
+            </div>
+            <div class="point">0 / 3</div>
+          </div>
+          <div class="col-md-4 col-3 m_skill_block">
+            <div class="icon" (click)='showSkill($event.target)'  title='版型'>
+                <i class="material-icons">
+                  widgets
+                    </i>
+            </div>
+            <div class="point">0 / 3</div>
+          </div>
+          <div class="col-md-4 col-3 m_skill_block">
+            <div class="icon" (click)='showSkill($event.target)'  title='動畫'>
+                <i class="material-icons">
+                  3d_rotation
+                    </i>
+            </div>
+            <div class="point">0 / 3</div>
+          </div>
+          <div class="col-12 blank">&nbsp; </div>
+        </div>
+      </div>
     </div>
 
-    <div class="row">
+    <div class="row" [class.noChoice]="true">
       <div class="col-md-3 col-12 arrow">
         <img src="../img/img-planet-js.png" alt="">
       </div>
-      <div class="offset-md-1 col-md-8 col-12"></div>
+      <div class="offset-md-1 col-md-8 col-12">
+        <div class="row">
+          <div class="col-md-4 col-3 m_skill_block">
+            <div class="icon" (click)='showSkill($event.target)'  title='基本DOM'>
+                <i class="material-icons">
+                  hdr_strong
+                    </i>
+            </div>
+            <div class="point">0 / 3</div>
+          </div>
+          <div class="col-md-4 col-3 m_skill_block">
+            <div class="icon" (click)='showSkill($event.target)'  title='圖形繪製'>
+                <i class="material-icons">
+                  gradient
+                    </i>
+            </div>
+            <div class="point">0 / 3</div>
+          </div>
+          <div class="col-md-4 col-3 m_skill_block">
+            <div class="icon" (click)='showSkill($event.target)'  title='更新語法'>
+                <i class="material-icons">
+                  format_quote
+                    </i>
+            </div>
+            <div class="point">0 / 3</div>
+          </div>
+          <div class="col-md-4 col-3 m_skill_block">
+            <div class="icon" (click)='showSkill($event.target)'  title='框架'>
+                <i class="material-icons">
+                  developer_mode
+                    </i>
+            </div>
+            <div class="point">0 / 3</div>
+          </div>
+          <div class="col-md-4 col-3 m_skill_block">
+            <div class="icon" (click)='showSkill($event.target)'  title='預處理器'>
+                <i class="material-icons">
+                  nfc
+                    </i>
+            </div>
+            <div class="point">0 / 3</div>
+          </div>
+          <div class="col-12 blank">&nbsp; </div>
+        </div>
+      </div>
     </div>
 
-    <div class="row">
+    <div class="row" [class.noChoice]="true">
       <div class="col-md-3 col-12 arrow">
         <img src="../img/img-planet-managers.png" alt="">
       </div>
-      <div class="offset-md-1 col-md-8 col-12"></div>
+      <div class="offset-md-1 col-md-8 col-12">
+        <div class="row">
+          <div class="col-md-4 col-3 m_skill_block">
+            <div class="icon" (click)='showSkill($event.target)'  title='套件管理'>
+                <i class="material-icons">
+                  device_hub
+                    </i>
+            </div>
+            <div class="point">0 / 3</div>
+          </div>
+          <div class="col-md-4 col-3 m_skill_block">
+            <div class="icon" (click)='showSkill($event.target)'  title='工作流程管理'>
+                <i class="material-icons">
+                  import_contacts
+                    </i>
+            </div>
+            <div class="point">0 / 3</div>
+          </div>
+          <div class="col-md-4 col-3 m_skill_block">
+            <div class="icon" (click)='showSkill($event.target)'  title='打包工具'>
+                <i class="material-icons">
+                  table_chart
+                    </i>
+            </div>
+            <div class="point">0 / 3</div>
+          </div>
+          <div class="col-12 blank"> &nbsp;</div>
+        </div>
+      </div>
     </div>
   </div>
 
 
-  <div class="col-md-4 col-12"></div>
+  <div class="col-lg-3 col-12">
+    <div class="row skill_detail">
+      <div class="col-12 icon">
+        <div class="row">
+          <div class="col-12">
+              <i class="material-icons">
+                  category
+                  </i>
+          </div>
+          <div class="col-12">
+              <span>基本技能</span>
+          </div>
+        </div>
+      </div>
+      <div class="col-12 item">
+        <a tabindex="0" class="btn btn-lg btn-purple" [class.btn-purple-Choice]='true' role="button" data-toggle="popover"
+        data-trigger="hover"
+        data-placement="bottom"
+        title="基礎 HTML"
+        data-content="了解語法結構、知道html5結構、知道10個html元素(a、h1、span、img)...">
+          基礎 HTML
+        </a>
+        <a tabindex="0" class="btn btn-lg btn-purple" role="button" data-toggle="popover"
+        data-trigger="hover"
+        data-placement="bottom"
+        title="基礎 CSS"
+        data-content="知道display的不同(flex、grid、block)，會換色修改大小">
+          基礎 CSS
+        </a>
+        <a tabindex="0" class="btn btn-lg btn-purple" role="button" data-toggle="popover"
+        data-trigger="hover"
+        data-placement="bottom"
+        title="基礎 JavaScript"
+        data-content="了解語法結構、知道DOM(抓取元件、修改值)">
+          基礎 JavaScript
+        </a>
+      </div>
+    </div>
+  </div>
 </div>
 
 
-<div style="text-align:center">
-  <h1>
-    Welcome to {{ title }}!
-  </h1>
-  <img width="300" alt="Angular Logo" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNTAgMjUwIj4KICAgIDxwYXRoIGZpbGw9IiNERDAwMzEiIGQ9Ik0xMjUgMzBMMzEuOSA2My4ybDE0LjIgMTIzLjFMMTI1IDIzMGw3OC45LTQzLjcgMTQuMi0xMjMuMXoiIC8+CiAgICA8cGF0aCBmaWxsPSIjQzMwMDJGIiBkPSJNMTI1IDMwdjIyLjItLjFWMjMwbDc4LjktNDMuNyAxNC4yLTEyMy4xTDEyNSAzMHoiIC8+CiAgICA8cGF0aCAgZmlsbD0iI0ZGRkZGRiIgZD0iTTEyNSA1Mi4xTDY2LjggMTgyLjZoMjEuN2wxMS43LTI5LjJoNDkuNGwxMS43IDI5LjJIMTgzTDEyNSA1Mi4xem0xNyA4My4zaC0zNGwxNy00MC45IDE3IDQwLjl6IiAvPgogIDwvc3ZnPg==">
-</div>
-<h2>Here are some links to help you start: </h2>
-<i class="material-icons">face</i>
-<ul>
-  <li>
-    <h2>
-      <a target="_blank" rel="noopener" href="https://angular.io/tutorial">Tour of Heroes</a>
-    </h2>
-  </li>
-  <li>
-    <h2>
-      <a target="_blank" rel="noopener" href="https://github.com/angular/angular-cli/wiki">CLI Documentation</a>
-    </h2>
-  </li>
-  <li>
-    <h2>
-      <a target="_blank" rel="noopener" href="https://blog.angular.io/">Angular blog</a>
-    </h2>
-  </li>
-</ul>
+
 
 <router-outlet></router-outlet>
