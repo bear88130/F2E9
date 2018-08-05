@@ -265,7 +265,7 @@ export class AppComponent implements OnInit {
 
   skill = [
     {
-      'name': '基礎HTML',
+      'name': '基本HTML',
       'point': 1,
       'preSkill': '',
       'noChoice': 0,
@@ -515,7 +515,8 @@ export class AppComponent implements OnInit {
 
   unLockAdvanced() {
     this.advancedSkill = (this.totalPoint > 3) ? false : true;
-    let passiveSkillArray = this.passiveSkill.filter((x) => x.name !== '基本工具');
+    let passiveSkillArray = this.passiveSkill.filter((x) => x.name !== '基本工具' );
+    let passiveSkillArray = passiveSkillArray.filter((x) => x.name !== '基本能力' );
     if (this.advancedSkill) {
       passiveSkillArray.forEach((element) => {
         element.noChoice = 1;
@@ -526,8 +527,8 @@ export class AppComponent implements OnInit {
     } else {
       passiveSkillArray.forEach((element) => {
         element.noChoice = 0;
-        element.canChoice = 1;
-        element.edChoice = 0;
+        element.canChoice = 0;
+        element.edChoice = 1;
         element.fullChoice = 0;
       });
     }
