@@ -170,23 +170,7 @@ export class AppComponent implements OnInit {
       'category': 'JavaScript',
       'relation': '',
       'nowPoint': 0
-    }
-    ,
-    {
-      'name': 'JS更新語法',
-      'point': 0,
-      'preSkill': ['ES6'],
-      'noChoice': 1,
-      'canChoice': 0,
-      'edChoice': 0,
-      'fullChoice': 0,
-      'svgName': 'format_quote',
-      'content': '',
-      'category': 'JavaScript',
-      'relation': '',
-      'nowPoint': 0
-    }
-    ,
+    },
     {
       'name': 'JS框架',
       'point': 0,
@@ -281,7 +265,7 @@ export class AppComponent implements OnInit {
     ,
     {
       'name': '基本JavaScript',
-      'point': 1,
+      'point': 3,
       'preSkill': '',
       'noChoice': 0,
       'canChoice': 1,
@@ -296,7 +280,7 @@ export class AppComponent implements OnInit {
     ,
     {
       'name': '基本CSS',
-      'point': 1,
+      'point': 2,
       'preSkill': '',
       'noChoice': 0,
       'canChoice': 1,
@@ -310,7 +294,7 @@ export class AppComponent implements OnInit {
     },
     {
       'name': 'GIT 版本控制',
-      'point': 1,
+      'point': 3,
       'preSkill': '',
       'noChoice': 0,
       'canChoice': 1,
@@ -325,7 +309,7 @@ export class AppComponent implements OnInit {
     ,
     {
       'name': '文字編輯器',
-      'point': 1,
+      'point': 2,
       'preSkill': '',
       'noChoice': 0,
       'canChoice': 1,
@@ -340,7 +324,7 @@ export class AppComponent implements OnInit {
     ,
     {
       'name': '基本CMD',
-      'point': 1,
+      'point': 2,
       'preSkill': '',
       'noChoice': 0,
       'canChoice': 1,
@@ -354,62 +338,62 @@ export class AppComponent implements OnInit {
     },
     {
       'name': 'BootStrap*',
-      'point': 1,
+      'point': 7,
       'preSkill': '',
       'noChoice': 0,
       'canChoice': 1,
       'edChoice': 0,
       'fullChoice': 0,
       'svgName': '',
-      'content': '了解 cd ..cd cls',
+      'content': '懂得整合並寫出想要的頁面',
       'category': 'CSS',
       'relation': 'CSS框架',
       'nowPoint': 0
     },
     {
       'name': 'UIKit',
-      'point': 1,
+      'point': 7,
       'preSkill': '',
       'noChoice': 0,
       'canChoice': 1,
       'edChoice': 0,
       'fullChoice': 0,
       'svgName': '',
-      'content': '了解 cd ..cd cls',
+      'content': '懂得整合並寫出想要的頁面',
       'category': 'CSS',
       'relation': 'CSS框架',
       'nowPoint': 0
     }
     , {
       'name': 'Foundation',
-      'point': 1,
+      'point': 7,
       'preSkill': '',
       'noChoice': 0,
       'canChoice': 1,
       'edChoice': 0,
       'fullChoice': 0,
       'svgName': '',
-      'content': '了解 cd ..cd cls',
+      'content': '懂得整合並寫出想要的頁面',
       'category': 'CSS',
       'relation': 'CSS框架',
       'nowPoint': 0
     }
     , {
       'name': 'Semantic UI',
-      'point': 1,
+      'point': 7,
       'preSkill': '',
       'noChoice': 0,
       'canChoice': 1,
       'edChoice': 0,
       'fullChoice': 0,
       'svgName': '',
-      'content': '了解 cd ..cd cls',
+      'content': '懂得整合並寫出想要的頁面',
       'category': 'CSS',
       'relation': 'CSS框架',
       'nowPoint': 0
     }, {
       'name': 'Sass*',
-      'point': 1,
+      'point': 6,
       'preSkill': '',
       'noChoice': 0,
       'canChoice': 1,
@@ -422,7 +406,7 @@ export class AppComponent implements OnInit {
       'nowPoint': 0
     }, {
       'name': 'Less',
-      'point': 1,
+      'point': 6,
       'preSkill': '',
       'noChoice': 0,
       'canChoice': 1,
@@ -435,7 +419,7 @@ export class AppComponent implements OnInit {
       'nowPoint': 0
     }, {
       'name': 'Stylus',
-      'point': 1,
+      'point': 6,
       'preSkill': '',
       'noChoice': 0,
       'canChoice': 1,
@@ -448,7 +432,7 @@ export class AppComponent implements OnInit {
       'nowPoint': 0
     }, {
       'name': 'PostCSS*',
-      'point': 1,
+      'point': 5,
       'preSkill': '',
       'noChoice': 0,
       'canChoice': 1,
@@ -461,7 +445,7 @@ export class AppComponent implements OnInit {
       'nowPoint': 0
     }, {
       'name': 'OOCSS',
-      'point': 1,
+      'point': 4,
       'preSkill': '',
       'noChoice': 0,
       'canChoice': 1,
@@ -474,7 +458,7 @@ export class AppComponent implements OnInit {
       'nowPoint': 0
     }, {
       'name': 'SMACSS',
-      'point': 1,
+      'point': 4,
       'preSkill': '',
       'noChoice': 0,
       'canChoice': 1,
@@ -487,7 +471,7 @@ export class AppComponent implements OnInit {
       'nowPoint': 0
     }, {
       'name': 'BEM',
-      'point': 1,
+      'point': 4,
       'preSkill': '',
       'noChoice': 0,
       'canChoice': 1,
@@ -500,7 +484,7 @@ export class AppComponent implements OnInit {
       'nowPoint': 0
     }, {
       'name': '初階RWD',
-      'point': 1,
+      'point': 5,
       'preSkill': '',
       'noChoice': 0,
       'canChoice': 1,
@@ -513,7 +497,7 @@ export class AppComponent implements OnInit {
       'nowPoint': 0
     }, {
       'name': 'Grid',
-      'point': 1,
+      'point': 3,
       'preSkill': '',
       'noChoice': 0,
       'canChoice': 1,
@@ -526,7 +510,7 @@ export class AppComponent implements OnInit {
       'nowPoint': 0
     }, {
       'name': 'Flex',
-      'point': 1,
+      'point': 4,
       'preSkill': '',
       'noChoice': 0,
       'canChoice': 1,
@@ -539,7 +523,7 @@ export class AppComponent implements OnInit {
       'nowPoint': 0
     }, {
       'name': '初階CSS動畫',
-      'point': 1,
+      'point': 4,
       'preSkill': '',
       'noChoice': 0,
       'canChoice': 1,
@@ -552,20 +536,20 @@ export class AppComponent implements OnInit {
       'nowPoint': 0
     }, {
       'name': 'JQuery',
-      'point': 1,
+      'point': 6,
       'preSkill': '',
       'noChoice': 0,
       'canChoice': 1,
       'edChoice': 0,
       'fullChoice': 0,
       'svgName': '',
-      'content': '懂得取得物件的值',
+      'content': '懂得JQuer的語法和版本差異',
       'category': 'JavaScript',
       'relation': '基本DOM',
       'nowPoint': 0
     }, {
       'name': 'SVG',
-      'point': 2,
+      'point': 3,
       'preSkill': '',
       'noChoice': 0,
       'canChoice': 1,
@@ -578,7 +562,7 @@ export class AppComponent implements OnInit {
       'nowPoint': 0
     }, {
       'name': 'Canvas',
-      'point': 3,
+      'point': 6,
       'preSkill': '',
       'noChoice': 0,
       'canChoice': 1,
@@ -591,20 +575,20 @@ export class AppComponent implements OnInit {
       'nowPoint': 0
     }, {
       'name': 'D3Js',
-      'point': 3,
+      'point': 6,
       'preSkill': '',
       'noChoice': 0,
       'canChoice': 1,
       'edChoice': 0,
       'fullChoice': 0,
       'svgName': '',
-      'content': '能畫出長條圖、圓餅圖',
+      'content': '能畫出長條圖、圓餅圖、樞紐分析圖',
       'category': 'JavaScript',
       'relation': 'JS圖形繪製',
       'nowPoint': 0
     }, {
       'name': 'ChartJs',
-      'point': 2,
+      'point': 3,
       'preSkill': '',
       'noChoice': 0,
       'canChoice': 1,
@@ -617,7 +601,7 @@ export class AppComponent implements OnInit {
       'nowPoint': 0
     } , {
       'name': 'ES6',
-      'point': 2,
+      'point': 4,
       'preSkill': '',
       'noChoice': 0,
       'canChoice': 1,
@@ -627,6 +611,188 @@ export class AppComponent implements OnInit {
       'content': ' 知道ES6更新項目 ',
       'category': 'JavaScript',
       'relation': 'JS更新語法',
+      'nowPoint': 0
+    }, {
+      'name': 'Vue',
+      'point': 6,
+      'preSkill': '',
+      'noChoice': 0,
+      'canChoice': 1,
+      'edChoice': 0,
+      'fullChoice': 0,
+      'svgName': '',
+      'content': ' 能利用 Vue 做出應用 ',
+      'category': 'JavaScript',
+      'relation': 'JS框架',
+      'nowPoint': 0
+    }, {
+      'name': 'React',
+      'point': 9,
+      'preSkill': '',
+      'noChoice': 0,
+      'canChoice': 1,
+      'edChoice': 0,
+      'fullChoice': 0,
+      'svgName': '',
+      'content': ' 能利用 React 做出應用 ',
+      'category': 'JavaScript',
+      'relation': 'JS框架',
+      'nowPoint': 0
+    }, {
+      'name': 'Angular',
+      'point': 8,
+      'preSkill': '',
+      'noChoice': 0,
+      'canChoice': 1,
+      'edChoice': 0,
+      'fullChoice': 0,
+      'svgName': '',
+      'content': ' 能利用 Angular 做出應用 ',
+      'category': 'JavaScript',
+      'relation': 'JS框架',
+      'nowPoint': 0
+    }, {
+      'name': 'TypeScript',
+      'point': 4,
+      'preSkill': '',
+      'noChoice': 0,
+      'canChoice': 1,
+      'edChoice': 0,
+      'fullChoice': 0,
+      'svgName': '',
+      'content': ' 知道 TypeScript 特性 ',
+      'category': 'JavaScript',
+      'relation': 'JS預處理器',
+      'nowPoint': 0
+    }, {
+      'name': 'Babel',
+      'point': 4,
+      'preSkill': '',
+      'noChoice': 0,
+      'canChoice': 1,
+      'edChoice': 0,
+      'fullChoice': 0,
+      'svgName': '',
+      'content': ' 轉譯成不同版本Js ',
+      'category': 'JavaScript',
+      'relation': 'JS預處理器',
+      'nowPoint': 0
+    }, {
+      'name': 'CoffeeScript',
+      'point': 4,
+      'preSkill': '',
+      'noChoice': 0,
+      'canChoice': 1,
+      'edChoice': 0,
+      'fullChoice': 0,
+      'svgName': '',
+      'content': ' 利用 CoffeeScript 寫 Code ',
+      'category': 'JavaScript',
+      'relation': 'JS預處理器',
+      'nowPoint': 0
+    }, {
+      'name': 'NPM',
+      'point': 4,
+      'preSkill': '',
+      'noChoice': 0,
+      'canChoice': 1,
+      'edChoice': 0,
+      'fullChoice': 0,
+      'svgName': '',
+      'content': ' 利用NPM安裝過東西 ',
+      'category': 'Managers',
+      'relation': '套件管理',
+      'nowPoint': 0
+    }, {
+      'name': 'YARN',
+      'point': 4,
+      'preSkill': '',
+      'noChoice': 0,
+      'canChoice': 1,
+      'edChoice': 0,
+      'fullChoice': 0,
+      'svgName': '',
+      'content': ' 利用YARN安裝過東西 ',
+      'category': 'Managers',
+      'relation': '套件管理',
+      'nowPoint': 0
+    }, {
+      'name': 'Bower',
+      'point': 3,
+      'preSkill': '',
+      'noChoice': 0,
+      'canChoice': 1,
+      'edChoice': 0,
+      'fullChoice': 0,
+      'svgName': '',
+      'content': ' 利用Bower安裝過東西 ',
+      'category': 'Managers',
+      'relation': '套件管理',
+      'nowPoint': 0
+    }, {
+      'name': 'npm script',
+      'point': 5,
+      'preSkill': '',
+      'noChoice': 0,
+      'canChoice': 1,
+      'edChoice': 0,
+      'fullChoice': 0,
+      'svgName': '',
+      'content': '有自訂自己的工作任務，並執行過',
+      'category': 'Managers',
+      'relation': '工作流程管理',
+      'nowPoint': 0
+    }, {
+      'name': 'gulp',
+      'point': 5,
+      'preSkill': '',
+      'noChoice': 0,
+      'canChoice': 1,
+      'edChoice': 0,
+      'fullChoice': 0,
+      'svgName': '',
+      'content': '有自訂自己的工作任務，並執行過',
+      'category': 'Managers',
+      'relation': '工作流程管理',
+      'nowPoint': 0
+    }, {
+      'name': 'grunt',
+      'point': 4,
+      'preSkill': '',
+      'noChoice': 0,
+      'canChoice': 1,
+      'edChoice': 0,
+      'fullChoice': 0,
+      'svgName': '',
+      'content': '有自訂自己的工作任務，並執行過',
+      'category': 'Managers',
+      'relation': '工作流程管理',
+      'nowPoint': 0
+    }, {
+      'name': 'Webpack',
+      'point': 6,
+      'preSkill': '',
+      'noChoice': 0,
+      'canChoice': 1,
+      'edChoice': 0,
+      'fullChoice': 0,
+      'svgName': '',
+      'content': '有將需要檔案打包到資料夾的經驗',
+      'category': 'Managers',
+      'relation': '打包工具',
+      'nowPoint': 0
+    }, {
+      'name': 'Parcel',
+      'point': 4,
+      'preSkill': '',
+      'noChoice': 0,
+      'canChoice': 1,
+      'edChoice': 0,
+      'fullChoice': 0,
+      'svgName': '',
+      'content': '有將需要檔案打包到資料夾的經驗',
+      'category': 'Managers',
+      'relation': '打包工具',
       'nowPoint': 0
     }
   ];
@@ -643,7 +809,7 @@ export class AppComponent implements OnInit {
   totalPoint = 0;
 
   ngOnInit() {
-    this.rankLevel = '初階新手';
+    this.rankLevel = '你還可以賣雞排?確定要踏入嗎？勇士！';
     this.nowShowSkill = '基本技能';
     this.nowSvgName = 'category';
     this.IsShowItem('基本技能');
@@ -665,6 +831,7 @@ export class AppComponent implements OnInit {
     this.changePassiveSkillState(SkillArray[0], passiveSkillArray[0], IsAdd);
     this.countTotalPoint();
     this.unLockAdvanced();
+    this.changeRankName();
   }
 
   // -----資料共用方法-----
@@ -726,6 +893,24 @@ export class AppComponent implements OnInit {
       }
     }
   }
+
+changeRankName() {
+  let rankName = '';
+  if ( this.totalPoint > 189) {
+    rankName = '外掛之手';
+    } else if ( this.totalPoint > 100) {
+    rankName = '高階神手';
+    } else if ( this.totalPoint > 40 ) {
+    rankName = '中階能手';
+    } else if ( this.totalPoint > 7) {
+    rankName = '初階新手';
+    } else if ( this.totalPoint >= 0) {
+    rankName = '準備入坑';
+    } else {
+    rankName = ' ';
+    }
+  this.rankLevel = rankName;
+}
 
   countTotalPoint() {
     this.totalPoint = 0;
