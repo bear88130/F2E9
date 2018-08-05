@@ -262,7 +262,7 @@ export class AppComponent implements OnInit {
       'nowPoint': 0
     }
   ];
-  
+
   skill = [
     {
       'name': '基礎HTML',
@@ -278,7 +278,7 @@ export class AppComponent implements OnInit {
       'relation': '基本技能',
       'nowPoint': 0
     }
-      ,
+    ,
     {
       'name': '基本JavaScript',
       'point': 1,
@@ -293,7 +293,7 @@ export class AppComponent implements OnInit {
       'relation': '基本技能',
       'nowPoint': 0
     }
-      ,
+    ,
     {
       'name': '基本CSS',
       'point': 1,
@@ -322,7 +322,7 @@ export class AppComponent implements OnInit {
       'relation': '基本工具',
       'nowPoint': 0
     }
-      ,
+    ,
     {
       'name': '文字編輯器',
       'point': 1,
@@ -337,7 +337,7 @@ export class AppComponent implements OnInit {
       'relation': '基本工具',
       'nowPoint': 0
     }
-      ,
+    ,
     {
       'name': '基本CMD',
       'point': 1,
@@ -380,7 +380,7 @@ export class AppComponent implements OnInit {
       'relation': 'CSS框架',
       'nowPoint': 0
     }
-      , {
+    , {
       'name': 'Foundation',
       'point': 1,
       'preSkill': '',
@@ -394,7 +394,7 @@ export class AppComponent implements OnInit {
       'relation': 'CSS框架',
       'nowPoint': 0
     }
-      , {
+    , {
       'name': 'Semantic UI',
       'point': 1,
       'preSkill': '',
@@ -410,7 +410,6 @@ export class AppComponent implements OnInit {
     }
   ];
   nowShowSkill = '基本技能';
-  // showSkillArray = this.skill.filter((x) => x.relation === this.nowShowSkill);
   showSkillArray = this.skill;
   basicArray = this.passiveSkill.filter((x) => x.category === 'Basic');
   cssArray = this.passiveSkill.filter((x) => x.category === 'CSS');
@@ -428,55 +427,91 @@ export class AppComponent implements OnInit {
     this.IsShowItem('基本技能');
   }
 
-  // 顯示邏輯
   showSkill(skillName: HTMLDivElement, svgName: string) {
     this.nowShowSkill = skillName.title;
     this.nowSvgName = svgName;
     this.IsShowItem(skillName.title);
   }
 
-  changeSkill() {
-    // this.showSkillArray = this.skill.filter((x) => x.relation === this.nowShowSkill);
-    // this.changeSkill(skillName.title);
-    // let changePassiveSkill = this.passiveSkill.filter((x) => x.preSkill.indexOf(skillName.title) !== -1);
-  }
+  changeSkill(skillElement: HTMLAnchorElement, passiveSkillName: string) {
+    // 顯示更換 skill 狀態 1 / 0
+    let SkillArray = this.skill.filter((x) => x.name === skillElement.innerHTML.trim());
+    this.changeSkillState(SkillArray[0]);
 
-  changePassiveSkill() {
+    let passiveSkillArray = this.passiveSkill.filter((x) => x.name === passiveSkillName);
+    this.changePassiveSkillState(SkillArray[0], passiveSkillArray[0]);
+    }
 
+  changePassiveSkill(skillElement: HTMLAnchorElement, passiveSkillName: string) {
+    let SkillArray = this.skill.filter((x) => x.name === skillElement.innerHTML.trim());
+    let passiveSkillArray = this.passiveSkill.filter((x) => x.name === passiveSkillName);
+    this.changePassiveSkillState(SkillArray[0], passiveSkillArray[0]);
   }
-  //-----資料共用方法-----
+  // -----資料共用方法-----
   checkChoice(skill) {
     let nowChoice = ' ';
     if (skill.noChoice === 1) {
       nowChoice = 'noChoice';
+      return nowChoice;
     } else if (skill.canChoice === 1) {
       nowChoice = 'canChoice';
+      return nowChoice;
     } else if (skill.edChoice === 1) {
       nowChoice = 'edChoice';
+      return nowChoice;
     } else if (skill.fullChoice === 1) {
       nowChoice = 'fullChoice';
+      return nowChoice;
     } else {
       nowChoice = 'error';
+      return nowChoice;
     }
-    return nowChoice;
   }
 
-  countSkill(title: string) {
-    let changeSkill = this.skill.filter((x) => x['name'] === title);
-    const moveValue = (changeSkill['nowPoint'] === 0) ? 1 : -1;
+  changeSkillState(data) {
+    let moveValue = (data.nowPoint === 0) ? 1 : -1;
     const stateChoice = ['noChoice', 'canChoice', 'edChoice', 'fullChoice'];
     let nowChoice = '';
     let changeChoice = '';
-    nowChoice = this.checkChoice(changeSkill);
+    nowChoice = this.checkChoice(data);
     changeChoice = stateChoice[stateChoice.indexOf(nowChoice) + moveValue];
-    changeSkill['noChoice'] = changeSkill['canChoice'] = changeSkill['edChoice'] = changeSkill['fullChoice'] = 0;
-    changeSkill[changeChoice] = 1;
+    data.noChoice = data.canChoice = data.edChoice = data.fullChoice = 0;
+    data[changeChoice] = 1;
+    data.nowPoint += moveValue;
   }
 
-  //-----顯示共用方法-----
+  changePassiveSkillState(skillData, passiveSkillName) {
+    let stateChoice = ['noChoice', 'canChoice', 'edChoice', 'fullChoice'];
+    let nowChoice = '';
+    let changeChoice = '';
+    if (skillData.nowPoint === 0) {
+      nowChoice = this.checkChoice(passiveSkillName);
+      if (passiveSkillName.nowPoint === 0 || passiveSkillName.nowPoint < passiveSkillName.preSkill.length) {
+        changeChoice = stateChoice[stateChoice.indexOf(nowChoice) + 1];
+        passiveSkillName.noChoice = passiveSkillName.canChoice = passiveSkillName.edChoice = passiveSkillName.fullChoice = 0;
+        passiveSkillName[changeChoice] = 1;
+        passiveSkillName.nowPoint += 1;
+        alert(passiveSkillName.noChoice + passiveSkillName.canChoice + passiveSkillName.edChoice + passiveSkillName.fullChoice);
+      } else if (passiveSkillName.nowPoint === passiveSkillName.preSkill.length) {
+        passiveSkillName.nowPoint = passiveSkillName.nowPoint;
+      }
+    } else {
+      nowChoice = this.checkChoice(passiveSkillName);
+      if (passiveSkillName.nowPoint > 0 && passiveSkillName.nowPoint <= passiveSkillName.preSkill.length ) {
+        passiveSkillName.nowPoint -= 1;
+        changeChoice = stateChoice[stateChoice.indexOf(nowChoice) - 1];
+        passiveSkillName.noChoice = passiveSkillName.canChoice = passiveSkillName.edChoice = passiveSkillName.fullChoice = 0;
+        passiveSkillName[changeChoice] = 1;
+      } else if (passiveSkillName.nowPoint === 0) {
+
+      }
+    }
+  }
+
+  // -----顯示共用方法-----
   IsShowItem(relation) {
     let boolean = false;
-    boolean = (relation === this.nowShowSkill) ? false : true ;
+    boolean = (relation === this.nowShowSkill) ? false : true;
     return boolean;
   }
 

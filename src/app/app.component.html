@@ -23,7 +23,7 @@
         <div class="row">
 
             <div class="col-md-4 col-3 m_skill_block" *ngFor="let item of basicArray">
-                <div class="icon" [class.noChoice]='item.noChoice'
+                <div class="icon"
                 [class.canChoice]='item.canChoice' [class.edChoice]='item.edChoice'
                 [class.fullChoice]='item.fullChoice' (click)='showSkill($event.target,item.svgName)'  [title]='item.name'>
                     <i class="material-icons" [title]='item.name'>
@@ -125,12 +125,15 @@
       </div>
       <div class="col-12 item" >
           <a *ngFor="let item of showSkillArray" tabindex="0" class="btn btn-lg btn-purple"
-          [class.edChoice]='item.edChoice' role="button" data-toggle="popover"
+          [class.canChoice]='item.canChoice'
+          [class.edChoice]='item.edChoice'
+          role="button" data-toggle="popover"
           [class.displayNone]='IsShowItem(item.relation)'
           data-trigger="hover"
           data-placement="bottom"
           [title]="item.name"
-          [attr.data-content]="item.content">
+          [attr.data-content]="item.content"
+          (click)="changeSkill($event.target);changePassiveSkill($event.target,item.relation)">
             {{item.name}}
           </a>
       </div>
