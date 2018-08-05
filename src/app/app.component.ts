@@ -407,6 +407,227 @@ export class AppComponent implements OnInit {
       'category': 'CSS',
       'relation': 'CSS框架',
       'nowPoint': 0
+    }, {
+      'name': 'Sass*',
+      'point': 1,
+      'preSkill': '',
+      'noChoice': 0,
+      'canChoice': 1,
+      'edChoice': 0,
+      'fullChoice': 0,
+      'svgName': '',
+      'content': '懂得編譯出 css',
+      'category': 'CSS',
+      'relation': 'CSS預處理器',
+      'nowPoint': 0
+    }, {
+      'name': 'Less',
+      'point': 1,
+      'preSkill': '',
+      'noChoice': 0,
+      'canChoice': 1,
+      'edChoice': 0,
+      'fullChoice': 0,
+      'svgName': '',
+      'content': '懂得編譯出 css',
+      'category': 'CSS',
+      'relation': 'CSS預處理器',
+      'nowPoint': 0
+    }, {
+      'name': 'Stylus',
+      'point': 1,
+      'preSkill': '',
+      'noChoice': 0,
+      'canChoice': 1,
+      'edChoice': 0,
+      'fullChoice': 0,
+      'svgName': '',
+      'content': '懂得編譯出 css',
+      'category': 'CSS',
+      'relation': 'CSS預處理器',
+      'nowPoint': 0
+    }, {
+      'name': 'PostCSS*',
+      'point': 1,
+      'preSkill': '',
+      'noChoice': 0,
+      'canChoice': 1,
+      'edChoice': 0,
+      'fullChoice': 0,
+      'svgName': '',
+      'content': '懂得解決 autoprefixer 問題',
+      'category': 'CSS',
+      'relation': 'CSS預處理器',
+      'nowPoint': 0
+    }, {
+      'name': 'OOCSS',
+      'point': 1,
+      'preSkill': '',
+      'noChoice': 0,
+      'canChoice': 1,
+      'edChoice': 0,
+      'fullChoice': 0,
+      'svgName': '',
+      'content': '懂得結構和樣式分離，懂得容器和內容導向',
+      'category': 'CSS',
+      'relation': 'CSS架構',
+      'nowPoint': 0
+    }, {
+      'name': 'SMACSS',
+      'point': 1,
+      'preSkill': '',
+      'noChoice': 0,
+      'canChoice': 1,
+      'edChoice': 0,
+      'fullChoice': 0,
+      'svgName': '',
+      'content': '懂得使 CSS 更彈性',
+      'category': 'CSS',
+      'relation': 'CSS架構',
+      'nowPoint': 0
+    }, {
+      'name': 'BEM',
+      'point': 1,
+      'preSkill': '',
+      'noChoice': 0,
+      'canChoice': 1,
+      'edChoice': 0,
+      'fullChoice': 0,
+      'svgName': '',
+      'content': '懂得命名規範和CSS關係',
+      'category': 'CSS',
+      'relation': 'CSS架構',
+      'nowPoint': 0
+    }, {
+      'name': '初階RWD',
+      'point': 1,
+      'preSkill': '',
+      'noChoice': 0,
+      'canChoice': 1,
+      'edChoice': 0,
+      'fullChoice': 0,
+      'svgName': '',
+      'content': '懂得根據不同寬度設計 CSS',
+      'category': 'CSS',
+      'relation': 'RWD',
+      'nowPoint': 0
+    }, {
+      'name': 'Grid',
+      'point': 1,
+      'preSkill': '',
+      'noChoice': 0,
+      'canChoice': 1,
+      'edChoice': 0,
+      'fullChoice': 0,
+      'svgName': '',
+      'content': '使用過 Grid 排版過',
+      'category': 'CSS',
+      'relation': 'CSS版型',
+      'nowPoint': 0
+    }, {
+      'name': 'Flex',
+      'point': 1,
+      'preSkill': '',
+      'noChoice': 0,
+      'canChoice': 1,
+      'edChoice': 0,
+      'fullChoice': 0,
+      'svgName': '',
+      'content': '使用過 Flex 排版過',
+      'category': 'CSS',
+      'relation': 'CSS版型',
+      'nowPoint': 0
+    }, {
+      'name': '初階CSS動畫',
+      'point': 1,
+      'preSkill': '',
+      'noChoice': 0,
+      'canChoice': 1,
+      'edChoice': 0,
+      'fullChoice': 0,
+      'svgName': '',
+      'content': '懂得將物件做 旋轉、移動、縮放、時間控制',
+      'category': 'CSS',
+      'relation': 'CSS動畫',
+      'nowPoint': 0
+    }, {
+      'name': 'JQuery',
+      'point': 1,
+      'preSkill': '',
+      'noChoice': 0,
+      'canChoice': 1,
+      'edChoice': 0,
+      'fullChoice': 0,
+      'svgName': '',
+      'content': '懂得取得物件的值',
+      'category': 'JavaScript',
+      'relation': '基本DOM',
+      'nowPoint': 0
+    }, {
+      'name': 'SVG',
+      'point': 2,
+      'preSkill': '',
+      'noChoice': 0,
+      'canChoice': 1,
+      'edChoice': 0,
+      'fullChoice': 0,
+      'svgName': '',
+      'content': '曾畫出一個SVG圖片',
+      'category': 'JavaScript',
+      'relation': 'JS圖形繪製',
+      'nowPoint': 0
+    }, {
+      'name': 'Canvas',
+      'point': 3,
+      'preSkill': '',
+      'noChoice': 0,
+      'canChoice': 1,
+      'edChoice': 0,
+      'fullChoice': 0,
+      'svgName': '',
+      'content': '曾用Canvas畫出 動畫',
+      'category': 'JavaScript',
+      'relation': 'JS圖形繪製',
+      'nowPoint': 0
+    }, {
+      'name': 'D3Js',
+      'point': 3,
+      'preSkill': '',
+      'noChoice': 0,
+      'canChoice': 1,
+      'edChoice': 0,
+      'fullChoice': 0,
+      'svgName': '',
+      'content': '能畫出長條圖、圓餅圖',
+      'category': 'JavaScript',
+      'relation': 'JS圖形繪製',
+      'nowPoint': 0
+    }, {
+      'name': 'ChartJs',
+      'point': 2,
+      'preSkill': '',
+      'noChoice': 0,
+      'canChoice': 1,
+      'edChoice': 0,
+      'fullChoice': 0,
+      'svgName': '',
+      'content': '能畫出長條圖、圓餅圖',
+      'category': 'JavaScript',
+      'relation': 'JS圖形繪製',
+      'nowPoint': 0
+    } , {
+      'name': 'ES6',
+      'point': 2,
+      'preSkill': '',
+      'noChoice': 0,
+      'canChoice': 1,
+      'edChoice': 0,
+      'fullChoice': 0,
+      'svgName': '',
+      'content': ' 知道ES6更新項目 ',
+      'category': 'JavaScript',
+      'relation': 'JS更新語法',
+      'nowPoint': 0
     }
   ];
   nowShowSkill = '基本技能';
@@ -490,7 +711,6 @@ export class AppComponent implements OnInit {
         passiveSkillName.noChoice = passiveSkillName.canChoice = passiveSkillName.edChoice = passiveSkillName.fullChoice = 0;
         passiveSkillName[changeChoice] = 1;
         passiveSkillName.nowPoint += 1;
-        alert(passiveSkillName.noChoice + passiveSkillName.canChoice + passiveSkillName.edChoice + passiveSkillName.fullChoice);
       } else if (passiveSkillName.nowPoint === passiveSkillName.preSkill.length) {
         passiveSkillName.nowPoint = passiveSkillName.nowPoint;
       }
