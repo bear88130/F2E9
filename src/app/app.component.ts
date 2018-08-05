@@ -811,7 +811,7 @@ export class AppComponent implements OnInit {
 
   ngOnInit() {
     this.rankLevel = '你還可以賣雞排?確定要踏入嗎？勇士！';
-    this.rankImg = '../img/img-ship-noob.png';
+    this.rankImg = '../assets/img/img-ship-noob.png';
     this.nowShowSkill = '基本技能';
     this.nowSvgName = 'category';
     this.IsShowItem('基本技能');
@@ -901,22 +901,22 @@ export class AppComponent implements OnInit {
     let rankImgSrc = '';
     if (this.totalPoint > 189) {
       rankName = '外掛之手';
-      rankImgSrc = '../img/img-ship-master.png';
+      rankImgSrc = '../assets/img/img-ship-master.png';
     } else if (this.totalPoint > 100) {
       rankName = '高階神手';
-      rankImgSrc = '../img/img-ship-master.png';
+      rankImgSrc = '../assets/img/img-ship-master.png';
     } else if (this.totalPoint > 40) {
       rankName = '中階能手';
-      rankImgSrc = '../img/img-ship-developer.png';
+      rankImgSrc = '../assets/img/img-ship-developer.png';
     } else if (this.totalPoint > 7) {
       rankName = '初階新手';
-      rankImgSrc = '../img/img-ship-noob.png';
+      rankImgSrc = '../assets/img/img-ship-noob.png';
     } else if (this.totalPoint > 0) {
       rankName = '準備入坑';
-      rankImgSrc = '../img/img-ship-noob.png';
+      rankImgSrc = '../assets/img/img-ship-noob.png';
     } else if (this.totalPoint === 0) {
       rankName = '決定賣雞排了嗎？';
-      rankImgSrc = '../img/img-ship-noob.png';
+      rankImgSrc = '../assets/img/img-ship-noob.png';
     } else {
       rankName = '出問題了！';
       rankImgSrc = '';
