@@ -262,8 +262,9 @@ export class AppComponent implements OnInit {
       'nowPoint': 0
     }
   ];
+  
   skill = [
-    [{
+    {
       'name': '基礎HTML',
       'point': 1,
       'preSkill': '',
@@ -294,7 +295,7 @@ export class AppComponent implements OnInit {
     }
       ,
     {
-      'name': '打包工具',
+      'name': '基本CSS',
       'point': 1,
       'preSkill': '',
       'noChoice': 0,
@@ -306,33 +307,184 @@ export class AppComponent implements OnInit {
       'category': 'Basic',
       'relation': '基本技能',
       'nowPoint': 0
-    }],
-    [],
+    },
+    {
+      'name': 'GIT 版本控制',
+      'point': 1,
+      'preSkill': '',
+      'noChoice': 0,
+      'canChoice': 1,
+      'edChoice': 0,
+      'fullChoice': 0,
+      'svgName': '',
+      'content': '了解儲存版本和版本回朔使用',
+      'category': 'Basic',
+      'relation': '基本工具',
+      'nowPoint': 0
+    }
+      ,
+    {
+      'name': '文字編輯器',
+      'point': 1,
+      'preSkill': '',
+      'noChoice': 0,
+      'canChoice': 1,
+      'edChoice': 0,
+      'fullChoice': 0,
+      'svgName': '',
+      'content': '懂得打開檔案儲存',
+      'category': 'Basic',
+      'relation': '基本工具',
+      'nowPoint': 0
+    }
+      ,
+    {
+      'name': '基本CMD',
+      'point': 1,
+      'preSkill': '',
+      'noChoice': 0,
+      'canChoice': 1,
+      'edChoice': 0,
+      'fullChoice': 0,
+      'svgName': '',
+      'content': '了解 cd ..cd cls',
+      'category': 'Basic',
+      'relation': '基本工具',
+      'nowPoint': 0
+    },
+    {
+      'name': 'BootStrap*',
+      'point': 1,
+      'preSkill': '',
+      'noChoice': 0,
+      'canChoice': 1,
+      'edChoice': 0,
+      'fullChoice': 0,
+      'svgName': '',
+      'content': '了解 cd ..cd cls',
+      'category': 'CSS',
+      'relation': 'CSS框架',
+      'nowPoint': 0
+    },
+    {
+      'name': 'UIKit',
+      'point': 1,
+      'preSkill': '',
+      'noChoice': 0,
+      'canChoice': 1,
+      'edChoice': 0,
+      'fullChoice': 0,
+      'svgName': '',
+      'content': '了解 cd ..cd cls',
+      'category': 'CSS',
+      'relation': 'CSS框架',
+      'nowPoint': 0
+    }
+      , {
+      'name': 'Foundation',
+      'point': 1,
+      'preSkill': '',
+      'noChoice': 0,
+      'canChoice': 1,
+      'edChoice': 0,
+      'fullChoice': 0,
+      'svgName': '',
+      'content': '了解 cd ..cd cls',
+      'category': 'CSS',
+      'relation': 'CSS框架',
+      'nowPoint': 0
+    }
+      , {
+      'name': 'Semantic UI',
+      'point': 1,
+      'preSkill': '',
+      'noChoice': 0,
+      'canChoice': 1,
+      'edChoice': 0,
+      'fullChoice': 0,
+      'svgName': '',
+      'content': '了解 cd ..cd cls',
+      'category': 'CSS',
+      'relation': 'CSS框架',
+      'nowPoint': 0
+    }
   ];
+  nowShowSkill = '基本技能';
+  // showSkillArray = this.skill.filter((x) => x.relation === this.nowShowSkill);
+  showSkillArray = this.skill;
   basicArray = this.passiveSkill.filter((x) => x.category === 'Basic');
   cssArray = this.passiveSkill.filter((x) => x.category === 'CSS');
-
   javascriptArray = this.passiveSkill.filter((x) => x.category === 'JavaScript');
-
   managersArray = this.passiveSkill.filter((x) => x.category === 'Managers');
-  nowSkill: string;
   nowSvgName: string;
   rankLevel: string;
   IsGroup = false;
   advancedSkill = true;
+
   ngOnInit() {
     this.rankLevel = '初階新手';
-    this.nowSkill = '基本技能';
+    this.nowShowSkill = '基本技能';
     this.nowSvgName = 'category';
+    this.IsShowItem('基本技能');
   }
+
+  // 顯示邏輯
   showSkill(skillName: HTMLDivElement, svgName: string) {
-    this.nowSkill = skillName.title;
+    this.nowShowSkill = skillName.title;
     this.nowSvgName = svgName;
+    this.IsShowItem(skillName.title);
   }
-  showGroupUp() {
+
+  changeSkill() {
+    // this.showSkillArray = this.skill.filter((x) => x.relation === this.nowShowSkill);
+    // this.changeSkill(skillName.title);
+    // let changePassiveSkill = this.passiveSkill.filter((x) => x.preSkill.indexOf(skillName.title) !== -1);
+  }
+
+  changePassiveSkill() {
+
+  }
+  //-----資料共用方法-----
+  checkChoice(skill) {
+    let nowChoice = ' ';
+    if (skill.noChoice === 1) {
+      nowChoice = 'noChoice';
+    } else if (skill.canChoice === 1) {
+      nowChoice = 'canChoice';
+    } else if (skill.edChoice === 1) {
+      nowChoice = 'edChoice';
+    } else if (skill.fullChoice === 1) {
+      nowChoice = 'fullChoice';
+    } else {
+      nowChoice = 'error';
+    }
+    return nowChoice;
+  }
+
+  countSkill(title: string) {
+    let changeSkill = this.skill.filter((x) => x['name'] === title);
+    const moveValue = (changeSkill['nowPoint'] === 0) ? 1 : -1;
+    const stateChoice = ['noChoice', 'canChoice', 'edChoice', 'fullChoice'];
+    let nowChoice = '';
+    let changeChoice = '';
+    nowChoice = this.checkChoice(changeSkill);
+    changeChoice = stateChoice[stateChoice.indexOf(nowChoice) + moveValue];
+    changeSkill['noChoice'] = changeSkill['canChoice'] = changeSkill['edChoice'] = changeSkill['fullChoice'] = 0;
+    changeSkill[changeChoice] = 1;
+  }
+
+  //-----顯示共用方法-----
+  IsShowItem(relation) {
+    let boolean = false;
+    boolean = (relation === this.nowShowSkill) ? false : true ;
+    return boolean;
+  }
+
+  upgradeEffect() {
     this.IsGroup = true;
     setTimeout(() => {
       this.IsGroup = false;
     }, 700);
   }
+
 }

@@ -48,7 +48,7 @@
             <div class="col-md-4 col-3 m_skill_block" *ngFor="let item of cssArray">
                 <div class="icon"
                 [class.canChoice]='item.canChoice' [class.edChoice]='item.edChoice'
-                [class.fullChoice]='item.fullChoice' (click)='showSkill($event.target)'  [title]='item.name'>
+                [class.fullChoice]='item.fullChoice' (click)='showSkill($event.target,item.svgName)'  [title]='item.name'>
                     <i class="material-icons" [title]='item.name'>
                         {{item.svgName}}
                         </i>
@@ -94,7 +94,7 @@
             <div class="col-md-4 col-3 m_skill_block" *ngFor="let item of managersArray">
                 <div class="icon"
                 [class.canChoice]='item.canChoice' [class.edChoice]='item.edChoice'
-                [class.fullChoice]='item.fullChoice' (click)='showSkill($event.target)'  [title]='item.name'>
+                [class.fullChoice]='item.fullChoice' (click)='showSkill($event.target,item.svgName)'  [title]='item.name'>
                     <i class="material-icons" [title]='item.name'>
                         {{item.svgName}}
                         </i>
@@ -119,32 +119,20 @@
                   </i>
           </div>
           <div class="col-12">
-              <span>{{nowSkill}}</span>
+              <span>{{nowShowSkill}}</span>
           </div>
         </div>
       </div>
-      <div class="col-12 item">
-        <a tabindex="0" class="btn btn-lg btn-purple" [class.edChoice]='true' role="button" data-toggle="popover"
-        data-trigger="hover"
-        data-placement="bottom"
-        title="基礎 HTML"
-        data-content="了解語法結構、知道html5結構、知道10個html元素(a、h1、span、img)...">
-          基礎 HTML
-        </a>
-        <a tabindex="0" class="btn btn-lg btn-purple noChoice" role="button" data-toggle="popover"
-        data-trigger="hover"
-        data-placement="bottom"
-        title="基礎 CSS"
-        data-content="知道display的不同(flex、grid、block)，會換色修改大小">
-          基礎 CSS
-        </a>
-        <a tabindex="0" class="btn btn-lg btn-purple" role="button" data-toggle="popover"
-        data-trigger="hover"
-        data-placement="bottom"
-        title="基礎 JavaScript"
-        data-content="了解語法結構、知道DOM(抓取元件、修改值)">
-          基礎 JavaScript
-        </a>
+      <div class="col-12 item" >
+          <a *ngFor="let item of showSkillArray" tabindex="0" class="btn btn-lg btn-purple"
+          [class.edChoice]='item.edChoice' role="button" data-toggle="popover"
+          [class.displayNone]='IsShowItem(item.relation)'
+          data-trigger="hover"
+          data-placement="bottom"
+          [title]="item.name"
+          [attr.data-content]="item.content">
+            {{item.name}}
+          </a>
       </div>
     </div>
   </div>
