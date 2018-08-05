@@ -875,21 +875,37 @@ export class AppComponent implements OnInit {
     let changeChoice = '';
     if (IsAdd) {
       nowChoice = this.checkChoice(passiveSkillName);
-      if (passiveSkillName.nowPoint === 0 || passiveSkillName.nowPoint < passiveSkillName.preSkill.length) {
+      if (passiveSkillName.nowPoint === 0) {
+        // 顯示邏輯
         changeChoice = stateChoice[stateChoice.indexOf(nowChoice) + 1];
         passiveSkillName.noChoice = passiveSkillName.canChoice = passiveSkillName.edChoice = passiveSkillName.fullChoice = 0;
         passiveSkillName[changeChoice] = 1;
+        // 加分
         passiveSkillName.nowPoint += 1;
-      } else if (passiveSkillName.nowPoint === passiveSkillName.preSkill.length) {
+      } else if (passiveSkillName.nowPoint > 0 && passiveSkillName.nowPoint < passiveSkillName.preSkill.length) {
+        if (passiveSkillName.nowPoint === passiveSkillName.preSkill.length - 1) {
+        // 顯示邏輯 1  2
+        changeChoice = stateChoice[stateChoice.indexOf(nowChoice) + 1];
+        passiveSkillName.noChoice = passiveSkillName.canChoice = passiveSkillName.edChoice = passiveSkillName.fullChoice = 0;
+        passiveSkillName[changeChoice] = 1;
+        // 加分
+        passiveSkillName.nowPoint += 1;
+        } else {
+          passiveSkillName.nowPoint += 1;
+        }
+      }  else if (passiveSkillName.nowPoint === passiveSkillName.preSkill.length) {
         passiveSkillName.nowPoint = passiveSkillName.nowPoint;
       }
     } else {
       nowChoice = this.checkChoice(passiveSkillName);
       if (passiveSkillName.nowPoint > 0 && passiveSkillName.nowPoint <= passiveSkillName.preSkill.length) {
-        passiveSkillName.nowPoint -= 1;
+        // 顯示邏輯
         changeChoice = stateChoice[stateChoice.indexOf(nowChoice) - 1];
         passiveSkillName.noChoice = passiveSkillName.canChoice = passiveSkillName.edChoice = passiveSkillName.fullChoice = 0;
         passiveSkillName[changeChoice] = 1;
+        // 負分
+        passiveSkillName.nowPoint -= 1;
+
       } else if (passiveSkillName.nowPoint === 0) {
 
       }
@@ -932,23 +948,24 @@ export class AppComponent implements OnInit {
   }
 
   unLockAdvanced() {
+    const passAdvancedSkill = this.advancedSkill;
     this.advancedSkill = (this.totalPoint > 3) ? false : true;
-    let passiveSkillArray = this.passiveSkill.filter((x) => x.name !== '基本工具');
-    // let passiveSkillArray = passiveSkillArray.filter((x) => x.name !== '基本能力');
-    if (this.advancedSkill) {
+    let passiveSkillArray = this.passiveSkill.filter((x) =>  x.name !== '基本工具' &&  x.name !== '基本技能');
+    const IsChange = (passAdvancedSkill !== this.advancedSkill) ? true : false;
+    if (IsChange) {
       passiveSkillArray.forEach((element) => {
-        element.noChoice = 1;
-        element.canChoice = 0;
+        element.noChoice = 0;
+        element.canChoice = 1;
         element.edChoice = 0;
         element.fullChoice = 0;
       });
     } else {
-      passiveSkillArray.forEach((element) => {
-        element.noChoice = 0;
-        element.canChoice = 0;
-        element.edChoice = 1;
-        element.fullChoice = 0;
-      });
+      // passiveSkillArray.forEach((element) => {
+      //   element.noChoice = 1;
+      //   element.canChoice = 0;
+      //   element.edChoice = 0;
+      //   element.fullChoice = 0;
+      // });
     }
 
   }
