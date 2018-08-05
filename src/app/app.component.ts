@@ -419,6 +419,7 @@ export class AppComponent implements OnInit {
   rankLevel: string;
   IsGroup = false;
   advancedSkill = true;
+  totalPoint = 0;
 
   ngOnInit() {
     this.rankLevel = '初階新手';
@@ -436,17 +437,15 @@ export class AppComponent implements OnInit {
   changeSkill(skillElement: HTMLAnchorElement, passiveSkillName: string) {
     // 顯示更換 skill 狀態 1 / 0
     let SkillArray = this.skill.filter((x) => x.name === skillElement.innerHTML.trim());
-    this.changeSkillState(SkillArray[0]);
+    let IsAdd = (SkillArray[0].nowPoint === 0) ? true : false;
+    this.changeSkillState(SkillArray[0], IsAdd);
 
     let passiveSkillArray = this.passiveSkill.filter((x) => x.name === passiveSkillName);
-    this.changePassiveSkillState(SkillArray[0], passiveSkillArray[0]);
-    }
-
-  changePassiveSkill(skillElement: HTMLAnchorElement, passiveSkillName: string) {
-    let SkillArray = this.skill.filter((x) => x.name === skillElement.innerHTML.trim());
-    let passiveSkillArray = this.passiveSkill.filter((x) => x.name === passiveSkillName);
-    this.changePassiveSkillState(SkillArray[0], passiveSkillArray[0]);
+    this.changePassiveSkillState(SkillArray[0], passiveSkillArray[0], IsAdd);
+    this.countTotalPoint();
+    this.unLockAdvanced();
   }
+
   // -----資料共用方法-----
   checkChoice(skill) {
     let nowChoice = ' ';
@@ -468,8 +467,8 @@ export class AppComponent implements OnInit {
     }
   }
 
-  changeSkillState(data) {
-    let moveValue = (data.nowPoint === 0) ? 1 : -1;
+  changeSkillState(data, IsAdd) {
+    let moveValue = (IsAdd) ? 1 : -1;
     const stateChoice = ['noChoice', 'canChoice', 'edChoice', 'fullChoice'];
     let nowChoice = '';
     let changeChoice = '';
@@ -480,11 +479,11 @@ export class AppComponent implements OnInit {
     data.nowPoint += moveValue;
   }
 
-  changePassiveSkillState(skillData, passiveSkillName) {
+  changePassiveSkillState(skillData, passiveSkillName, IsAdd) {
     let stateChoice = ['noChoice', 'canChoice', 'edChoice', 'fullChoice'];
     let nowChoice = '';
     let changeChoice = '';
-    if (skillData.nowPoint === 0) {
+    if (IsAdd) {
       nowChoice = this.checkChoice(passiveSkillName);
       if (passiveSkillName.nowPoint === 0 || passiveSkillName.nowPoint < passiveSkillName.preSkill.length) {
         changeChoice = stateChoice[stateChoice.indexOf(nowChoice) + 1];
@@ -497,7 +496,7 @@ export class AppComponent implements OnInit {
       }
     } else {
       nowChoice = this.checkChoice(passiveSkillName);
-      if (passiveSkillName.nowPoint > 0 && passiveSkillName.nowPoint <= passiveSkillName.preSkill.length ) {
+      if (passiveSkillName.nowPoint > 0 && passiveSkillName.nowPoint <= passiveSkillName.preSkill.length) {
         passiveSkillName.nowPoint -= 1;
         changeChoice = stateChoice[stateChoice.indexOf(nowChoice) - 1];
         passiveSkillName.noChoice = passiveSkillName.canChoice = passiveSkillName.edChoice = passiveSkillName.fullChoice = 0;
@@ -506,6 +505,33 @@ export class AppComponent implements OnInit {
 
       }
     }
+  }
+
+  countTotalPoint() {
+    this.totalPoint = 0;
+    let SkillArray = this.skill.filter((x) => x.edChoice === 1);
+    SkillArray.forEach((x) => this.totalPoint += x.point);
+  }
+
+  unLockAdvanced() {
+    this.advancedSkill = (this.totalPoint > 3) ? false : true;
+    let passiveSkillArray = this.passiveSkill.filter((x) => x.name !== '基本工具');
+    if (this.advancedSkill) {
+      passiveSkillArray.forEach((element) => {
+        element.noChoice = 1;
+        element.canChoice = 0;
+        element.edChoice = 0;
+        element.fullChoice = 0;
+      });
+    } else {
+      passiveSkillArray.forEach((element) => {
+        element.noChoice = 0;
+        element.canChoice = 1;
+        element.edChoice = 0;
+        element.fullChoice = 0;
+      });
+    }
+
   }
 
   // -----顯示共用方法-----

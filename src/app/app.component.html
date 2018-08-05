@@ -6,7 +6,7 @@
       <br> SKILL TREE</h1>
     <div class="purple_text">等級</div>
     <div class='rank_title'>
-      <span>{{rankLevel}}</span>
+      <span>{{rankLevel}} <br> 分數：{{totalPoint}} </span>
     </div>
     <div class="rank_img">
       <img src="../img/img-ship-beginner.png" alt="">
@@ -45,16 +45,16 @@
       <div class="offset-md-1 col-md-8 col-12">
         <div class="row">
 
-            <div class="col-md-4 col-3 m_skill_block" *ngFor="let item of cssArray">
-                <div class="icon"
-                [class.canChoice]='item.canChoice' [class.edChoice]='item.edChoice'
-                [class.fullChoice]='item.fullChoice' (click)='showSkill($event.target,item.svgName)'  [title]='item.name'>
-                    <i class="material-icons" [title]='item.name'>
-                        {{item.svgName}}
-                        </i>
-                </div>
-                <div class="point">{{item.nowPoint}} / {{item.preSkill.length}}</div>
-              </div>
+          <div class="col-md-4 col-3 m_skill_block" *ngFor="let item of cssArray">
+            <div class="icon"
+            [class.canChoice]='item.canChoice' [class.edChoice]='item.edChoice'
+            [class.fullChoice]='item.fullChoice' (click)='showSkill($event.target,item.svgName)'  [title]='item.name'>
+                <i class="material-icons" [title]='item.name'>
+                    {{item.svgName}}
+                    </i>
+            </div>
+            <div class="point">{{item.nowPoint}} / {{item.preSkill.length}}</div>
+          </div>
 
           <div class="col-12 blank">&nbsp; </div>
         </div>
@@ -68,16 +68,16 @@
       <div class="offset-md-1 col-md-8 col-12">
         <div class="row">
 
-            <div class="col-md-4 col-3 m_skill_block" *ngFor="let item of javascriptArray">
-                <div class="icon"
-                [class.canChoice]='item.canChoice' [class.edChoice]='item.edChoice'
-                [class.fullChoice]='item.fullChoice' (click)='showSkill($event.target)'  [title]='item.name'>
-                    <i class="material-icons" [title]='item.name'>
-                        {{item.svgName}}
-                        </i>
-                </div>
-                <div class="point">{{item.nowPoint}} / {{item.preSkill.length}}</div>
-              </div>
+          <div class="col-md-4 col-3 m_skill_block" *ngFor="let item of javascriptArray">
+            <div class="icon"
+            [class.canChoice]='item.canChoice' [class.edChoice]='item.edChoice'
+            [class.fullChoice]='item.fullChoice' (click)='showSkill($event.target,item.svgName)'  [title]='item.name'>
+                <i class="material-icons" [title]='item.name'>
+                    {{item.svgName}}
+                    </i>
+            </div>
+            <div class="point">{{item.nowPoint}} / {{item.preSkill.length}}</div>
+          </div>
 
           <div class="col-12 blank">&nbsp; </div>
         </div>
@@ -91,16 +91,16 @@
       <div class="offset-md-1 col-md-8 col-12">
         <div class="row">
 
-            <div class="col-md-4 col-3 m_skill_block" *ngFor="let item of managersArray">
-                <div class="icon"
-                [class.canChoice]='item.canChoice' [class.edChoice]='item.edChoice'
-                [class.fullChoice]='item.fullChoice' (click)='showSkill($event.target,item.svgName)'  [title]='item.name'>
-                    <i class="material-icons" [title]='item.name'>
-                        {{item.svgName}}
-                        </i>
-                </div>
-                <div class="point">{{item.nowPoint}} / {{item.preSkill.length}}</div>
-              </div>
+          <div class="col-md-4 col-3 m_skill_block" *ngFor="let item of managersArray">
+            <div class="icon"
+            [class.canChoice]='item.canChoice' [class.edChoice]='item.edChoice'
+            [class.fullChoice]='item.fullChoice' (click)='showSkill($event.target,item.svgName)'  [title]='item.name'>
+                <i class="material-icons" [title]='item.name'>
+                    {{item.svgName}}
+                    </i>
+            </div>
+            <div class="point">{{item.nowPoint}} / {{item.preSkill.length}}</div>
+          </div>
 
           <div class="col-12 blank"> &nbsp;</div>
         </div>
@@ -133,7 +133,7 @@
           data-placement="bottom"
           [title]="item.name"
           [attr.data-content]="item.content"
-          (click)="changeSkill($event.target);changePassiveSkill($event.target,item.relation)">
+          (click)="changeSkill($event.target,item.relation)">
             {{item.name}}
           </a>
       </div>
