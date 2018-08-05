@@ -599,7 +599,7 @@ export class AppComponent implements OnInit {
       'category': 'JavaScript',
       'relation': 'JS圖形繪製',
       'nowPoint': 0
-    } , {
+    }, {
       'name': 'ES6',
       'point': 4,
       'preSkill': '',
@@ -804,12 +804,14 @@ export class AppComponent implements OnInit {
   managersArray = this.passiveSkill.filter((x) => x.category === 'Managers');
   nowSvgName: string;
   rankLevel: string;
+  rankImg: string;
   IsGroup = false;
   advancedSkill = true;
   totalPoint = 0;
 
   ngOnInit() {
     this.rankLevel = '你還可以賣雞排?確定要踏入嗎？勇士！';
+    this.rankImg = '../img/img-ship-noob.png';
     this.nowShowSkill = '基本技能';
     this.nowSvgName = 'category';
     this.IsShowItem('基本技能');
@@ -894,23 +896,34 @@ export class AppComponent implements OnInit {
     }
   }
 
-changeRankName() {
-  let rankName = '';
-  if ( this.totalPoint > 189) {
-    rankName = '外掛之手';
-    } else if ( this.totalPoint > 100) {
-    rankName = '高階神手';
-    } else if ( this.totalPoint > 40 ) {
-    rankName = '中階能手';
-    } else if ( this.totalPoint > 7) {
-    rankName = '初階新手';
-    } else if ( this.totalPoint >= 0) {
-    rankName = '準備入坑';
+  changeRankName() {
+    let rankName = '';
+    let rankImgSrc = '';
+    if (this.totalPoint > 189) {
+      rankName = '外掛之手';
+      rankImgSrc = '../img/img-ship-master.png';
+    } else if (this.totalPoint > 100) {
+      rankName = '高階神手';
+      rankImgSrc = '../img/img-ship-master.png';
+    } else if (this.totalPoint > 40) {
+      rankName = '中階能手';
+      rankImgSrc = '../img/img-ship-developer.png';
+    } else if (this.totalPoint > 7) {
+      rankName = '初階新手';
+      rankImgSrc = '../img/img-ship-noob.png';
+    } else if (this.totalPoint > 0) {
+      rankName = '準備入坑';
+      rankImgSrc = '../img/img-ship-noob.png';
+    } else if (this.totalPoint === 0) {
+      rankName = '決定賣雞排了嗎？';
+      rankImgSrc = '../img/img-ship-noob.png';
     } else {
-    rankName = ' ';
+      rankName = '出問題了！';
+      rankImgSrc = '';
     }
-  this.rankLevel = rankName;
-}
+    this.rankLevel = rankName;
+    this.rankImg = rankImgSrc;
+  }
 
   countTotalPoint() {
     this.totalPoint = 0;
@@ -920,8 +933,8 @@ changeRankName() {
 
   unLockAdvanced() {
     this.advancedSkill = (this.totalPoint > 3) ? false : true;
-    let passiveSkillArray = this.passiveSkill.filter((x) => x.name !== '基本工具' );
-    let passiveSkillArray = passiveSkillArray.filter((x) => x.name !== '基本能力' );
+    let passiveSkillArray = this.passiveSkill.filter((x) => x.name !== '基本工具');
+    let passiveSkillArray = passiveSkillArray.filter((x) => x.name !== '基本能力');
     if (this.advancedSkill) {
       passiveSkillArray.forEach((element) => {
         element.noChoice = 1;
