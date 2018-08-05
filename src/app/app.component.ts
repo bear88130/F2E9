@@ -246,7 +246,6 @@ export class AppComponent implements OnInit {
       'nowPoint': 0
     }
   ];
-
   skill = [
     {
       'name': '基本HTML',
@@ -805,7 +804,6 @@ export class AppComponent implements OnInit {
   nowSvgName: string;
   rankLevel: string;
   rankImg: string;
-  IsGroup = false;
   advancedSkill = true;
   totalPoint = 0;
 
@@ -988,11 +986,9 @@ export class AppComponent implements OnInit {
     return boolean;
   }
 
-  upgradeEffect() {
-    this.IsGroup = true;
-    setTimeout(() => {
-      this.IsGroup = false;
-    }, 700);
+  IsIng(PassiveName) {
+    let IsGroup = true;
+    return IsGroup;
   }
 
 }

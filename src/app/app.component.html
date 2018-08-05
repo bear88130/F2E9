@@ -24,7 +24,7 @@
 
             <div class="col-md-4 col-3 m_skill_block" *ngFor="let item of basicArray">
                 <div class="icon"
-                [class.canChoice]='item.canChoice' [class.edChoice]='item.edChoice'
+                [class.canChoice]='item.canChoice' [class.edChoice]='item.edChoice' [class.ingChoice]='IsIng(item.relation)'
                 [class.fullChoice]='item.fullChoice' (click)='showSkill($event.target,item.svgName)'  [title]='item.name'>
                     <i class="material-icons" [title]='item.name'>
                         {{item.svgName}}
@@ -47,7 +47,7 @@
 
           <div class="col-md-4 col-3 m_skill_block" *ngFor="let item of cssArray">
             <div class="icon"
-            [class.canChoice]='item.canChoice' [class.edChoice]='item.edChoice'
+            [class.canChoice]='item.canChoice' [class.edChoice]='item.edChoice' [class.ingChoice]='IsIng(item.relation)'
             [class.fullChoice]='item.fullChoice' (click)='showSkill($event.target,item.svgName)'  [title]='item.name'>
                 <i class="material-icons" [title]='item.name'>
                     {{item.svgName}}
@@ -70,7 +70,7 @@
 
           <div class="col-md-4 col-3 m_skill_block" *ngFor="let item of javascriptArray">
             <div class="icon"
-            [class.canChoice]='item.canChoice' [class.edChoice]='item.edChoice'
+            [class.canChoice]='item.canChoice' [class.edChoice]='item.edChoice' [class.ingChoice]='IsIng(item.relation)'
             [class.fullChoice]='item.fullChoice' (click)='showSkill($event.target,item.svgName)'  [title]='item.name'>
                 <i class="material-icons" [title]='item.name'>
                     {{item.svgName}}
@@ -93,7 +93,7 @@
 
           <div class="col-md-4 col-3 m_skill_block" *ngFor="let item of managersArray">
             <div class="icon"
-            [class.canChoice]='item.canChoice' [class.edChoice]='item.edChoice'
+            [class.canChoice]='item.canChoice' [class.edChoice]='item.edChoice' [class.ingChoice]='IsIng(item.relation)'
             [class.fullChoice]='item.fullChoice' (click)='showSkill($event.target,item.svgName)'  [title]='item.name'>
                 <i class="material-icons" [title]='item.name'>
                     {{item.svgName}}
