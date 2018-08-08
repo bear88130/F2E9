@@ -822,7 +822,7 @@ export class HomeComponent implements OnInit {
     this.IsShowItem('基本技能');
     this.showId = this.route
     .queryParamMap
-    .pipe(map(params => params.get('id') || 'None'));
+    .pipe(map(params => params.get('id') || undefined));
   }
 
   showSkill(skillName: HTMLDivElement, svgName: string) {
