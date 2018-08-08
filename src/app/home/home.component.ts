@@ -811,11 +811,11 @@ export class HomeComponent implements OnInit {
   totalPoint = 0;
   showId: Observable<string>;
   constructor(
-    // private route: ActivatedRoute
+    private route: ActivatedRoute
   ) {
-    // this.showId = this.route
-    // .queryParamMap
-    // .pipe(map(params => params.get('id') || undefined));
+    this.showId = this.route
+    .queryParamMap
+    .pipe(map(params => params.get('id') || undefined));
   }
 
   ngOnInit() {
