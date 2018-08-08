@@ -18,7 +18,7 @@ import { HomeComponent } from './home/home.component';
     AppRoutingModule
   ],
   providers: [
-    // Location, {provide: LocationStrategy, useClass: HashLocationStrategy}
+    Location, {provide: LocationStrategy, useClass: HashLocationStrategy}
   ],
   bootstrap: [AppComponent]
 })
