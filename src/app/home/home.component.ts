@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
 
 @Component({
   selector: 'app-home',
@@ -806,6 +809,10 @@ export class HomeComponent implements OnInit {
   rankImg: string;
   advancedSkill = true;
   totalPoint = 0;
+  showId: Observable<string>;
+  constructor(private route: ActivatedRoute) {
+
+  }
 
   ngOnInit() {
     this.rankLevel = '你還可以賣雞排?確定要踏入嗎？勇士！';
@@ -813,6 +820,9 @@ export class HomeComponent implements OnInit {
     this.nowShowSkill = '基本技能';
     this.nowSvgName = 'category';
     this.IsShowItem('基本技能');
+    this.showId = this.route
+    .queryParamMap
+    .pipe(map(params => params.get('id') || 'None'));
   }
 
   showSkill(skillName: HTMLDivElement, svgName: string) {
@@ -909,12 +919,12 @@ export class HomeComponent implements OnInit {
         }
 
       } else if (passiveSkillName.nowPoint === passiveSkillName.preSkill.length) {
-          // 顯示邏輯
-          changeChoice = stateChoice[stateChoice.indexOf(nowChoice) - 1];
-          passiveSkillName.noChoice = passiveSkillName.canChoice = passiveSkillName.edChoice = passiveSkillName.fullChoice = 0;
-          passiveSkillName[changeChoice] = 1;
-          // 負分
-          passiveSkillName.nowPoint -= 1;
+        // 顯示邏輯
+        changeChoice = stateChoice[stateChoice.indexOf(nowChoice) - 1];
+        passiveSkillName.noChoice = passiveSkillName.canChoice = passiveSkillName.edChoice = passiveSkillName.fullChoice = 0;
+        passiveSkillName[changeChoice] = 1;
+        // 負分
+        passiveSkillName.nowPoint -= 1;
       } else if (passiveSkillName.nowPoint === 0) {
 
       }
