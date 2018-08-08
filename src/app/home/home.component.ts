@@ -810,8 +810,12 @@ export class HomeComponent implements OnInit {
   advancedSkill = true;
   totalPoint = 0;
   showId: Observable<string>;
-  constructor(private route: ActivatedRoute) {
-
+  constructor(
+    // private route: ActivatedRoute
+  ) {
+    // this.showId = this.route
+    // .queryParamMap
+    // .pipe(map(params => params.get('id') || undefined));
   }
 
   ngOnInit() {
@@ -820,9 +824,6 @@ export class HomeComponent implements OnInit {
     this.nowShowSkill = '基本技能';
     this.nowSvgName = 'category';
     this.IsShowItem('基本技能');
-    this.showId = this.route
-    .queryParamMap
-    .pipe(map(params => params.get('id') || undefined));
   }
 
   showSkill(skillName: HTMLDivElement, svgName: string) {
@@ -997,10 +998,7 @@ export class HomeComponent implements OnInit {
   }
 
   IsIng(PassiveName) {
-    let IsGroup = true;
-    setTimeout(() => {
-      IsGroup = false;
-    }, 700);
+    const IsGroup = true;
     return IsGroup;
   }
 
