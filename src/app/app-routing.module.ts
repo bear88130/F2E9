@@ -5,9 +5,10 @@ import { HeaderComponent } from './header/header.component';
 import { HomeComponent } from './home/home.component';
 
 const routes: Routes = [
-  { path: '', component: AppComponent },
+  { path: '', component: HomeComponent },
   { path: 'home', component: HomeComponent },
-  { path: 'header', component: HeaderComponent }
+  { path: 'header', component: HeaderComponent },
+  { path: '**', component: HomeComponent },
 ];
 
 @NgModule({
