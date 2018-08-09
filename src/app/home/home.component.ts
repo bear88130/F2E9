@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { async } from '../../../node_modules/@types/q';
@@ -811,13 +811,18 @@ export class HomeComponent implements OnInit {
   advancedSkill = true;
   totalPoint = 0;
   showId: Observable<string>;
+  urlParams: string ;
+  urlSkillArray;
   constructor(
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private router: Router
   ) {
 
   }
 
   ngOnInit() {
+    this.urlParams = '';
+    this.urlSkillArray = [];
     this.rankLevel = '你還可以賣雞排?確定要踏入嗎？勇士！';
     this.rankImg = './assets/img/img-ship-noob.png';
     this.nowShowSkill = '基本技能';
@@ -882,6 +887,22 @@ export class HomeComponent implements OnInit {
     this.countTotalPoint();
     this.unLockAdvanced();
     this.changeRankName();
+    this.addUrl(skillElement.innerHTML.trim());
+  }
+
+  addUrl(skillName) {
+    this.router.navigate(['/home'], {queryParams: {id: '123'}});
+
+    // let IsHad = false ;
+    // IsHad = (this.urlSkillArray.indexOf(skillName) !== -1) ? true : false;
+
+    // alert(IsHad);
+    // if (IsHad) {
+    // } else {
+    //   this.urlSkillArray.push(skillName);
+    //   this.urlParams += skillName + ',';
+    // }
+
   }
 
   // -----資料共用方法-----
