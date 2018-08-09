@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
+import { async } from '../../../node_modules/@types/q';
 
 @Component({
   selector: 'app-home',
@@ -28,7 +29,7 @@ export class HomeComponent implements OnInit {
     {
       'name': '基本工具',
       'point': 0,
-      'preSkill': ['GIT 版本控制', '文字編輯器', '基本CMD'],
+      'preSkill': ['GIT版本控制', '文字編輯器', '基本CMD'],
       'noChoice': 0,
       'canChoice': 1,
       'edChoice': 0,
@@ -43,7 +44,7 @@ export class HomeComponent implements OnInit {
     {
       'name': 'CSS框架',
       'point': 0,
-      'preSkill': ['BootStrap*', 'UIKit', 'Foundation', 'Semantic UI'],
+      'preSkill': ['BootStrap*', 'UIKit', 'Foundation', 'SemanticUI'],
       'noChoice': 1,
       'canChoice': 0,
       'edChoice': 0,
@@ -222,7 +223,7 @@ export class HomeComponent implements OnInit {
     {
       'name': '工作流程管理',
       'point': 0,
-      'preSkill': ['npm script', 'gulp', 'grunt'],
+      'preSkill': ['npmScript', 'gulp', 'grunt'],
       'noChoice': 1,
       'canChoice': 0,
       'edChoice': 0,
@@ -295,7 +296,7 @@ export class HomeComponent implements OnInit {
       'nowPoint': 0
     },
     {
-      'name': 'GIT 版本控制',
+      'name': 'GIT版本控制',
       'point': 3,
       'preSkill': '',
       'noChoice': 0,
@@ -381,7 +382,7 @@ export class HomeComponent implements OnInit {
       'nowPoint': 0
     }
     , {
-      'name': 'Semantic UI',
+      'name': 'SemanticUI',
       'point': 7,
       'preSkill': '',
       'noChoice': 0,
@@ -732,7 +733,7 @@ export class HomeComponent implements OnInit {
       'relation': '套件管理',
       'nowPoint': 0
     }, {
-      'name': 'npm script',
+      'name': 'npmScript',
       'point': 5,
       'preSkill': '',
       'noChoice': 0,
@@ -813,9 +814,7 @@ export class HomeComponent implements OnInit {
   constructor(
     private route: ActivatedRoute
   ) {
-    this.showId = this.route
-    .queryParamMap
-    .pipe(map(params => params.get('id') || undefined));
+
   }
 
   ngOnInit() {
@@ -824,8 +823,48 @@ export class HomeComponent implements OnInit {
     this.nowShowSkill = '基本技能';
     this.nowSvgName = 'category';
     this.IsShowItem('基本技能');
+    this.showId = this.route
+      .queryParamMap
+      .pipe(map(params => params.get('id') || ''));
+    this.firstLoad();
   }
 
+  firstLoad() {
+    let IsArray = false;
+    let IsLoad = false;
+    const IsAdd = true;
+    let InitString = '';
+    let InitArray = [];
+
+    this.showId.subscribe((value) => {
+      InitString = value;
+    });
+
+    IsLoad = (InitString === '') ? false : true ;
+    IsArray = (InitString.indexOf(',') === -1) ? false : true ;
+
+    if (IsArray) {
+      InitArray = InitString.split(',');
+    } else {
+      InitArray.push(InitString) ;
+    }
+
+    if (IsLoad) {
+      InitArray.forEach((skillName) => {
+        const SkillArray = this.skill.filter((x) => x.name === skillName);
+        this.changeSkillState(SkillArray[0], IsAdd);
+
+        const passiveSkillArray = this.passiveSkill.filter((x) => x.name === SkillArray[0].relation);
+        this.changePassiveSkillState(passiveSkillArray[0], IsAdd);
+        this.countTotalPoint();
+        this.unLockAdvanced();
+        this.changeRankName();
+      });
+    } else {
+
+    }
+
+  }
   showSkill(skillName: HTMLDivElement, svgName: string) {
     this.nowShowSkill = skillName.title;
     this.nowSvgName = svgName;
@@ -839,7 +878,7 @@ export class HomeComponent implements OnInit {
     this.changeSkillState(SkillArray[0], IsAdd);
 
     let passiveSkillArray = this.passiveSkill.filter((x) => x.name === passiveSkillName);
-    this.changePassiveSkillState(SkillArray[0], passiveSkillArray[0], IsAdd);
+    this.changePassiveSkillState(passiveSkillArray[0], IsAdd);
     this.countTotalPoint();
     this.unLockAdvanced();
     this.changeRankName();
@@ -878,19 +917,26 @@ export class HomeComponent implements OnInit {
     data.nowPoint += moveValue;
   }
 
-  changePassiveSkillState(skillData, passiveSkillName, IsAdd) {
+  changePassiveSkillState(passiveSkillName, IsAdd) {
     let stateChoice = ['noChoice', 'canChoice', 'edChoice', 'fullChoice'];
     let nowChoice = '';
     let changeChoice = '';
     if (IsAdd) {
       nowChoice = this.checkChoice(passiveSkillName);
       if (passiveSkillName.nowPoint === 0) {
-        // 顯示邏輯
-        changeChoice = stateChoice[stateChoice.indexOf(nowChoice) + 1];
-        passiveSkillName.noChoice = passiveSkillName.canChoice = passiveSkillName.edChoice = passiveSkillName.fullChoice = 0;
-        passiveSkillName[changeChoice] = 1;
-        // 加分
-        passiveSkillName.nowPoint += 1;
+        if (passiveSkillName.nowPoint === 0 && passiveSkillName.preSkill.length === 1) {
+          passiveSkillName.nowPoint += 1;
+          passiveSkillName.noChoice = passiveSkillName.canChoice = passiveSkillName.edChoice = passiveSkillName.fullChoice = 0;
+          passiveSkillName['fullChoice'] = 1;
+        } else {
+          // 顯示邏輯
+          changeChoice = stateChoice[stateChoice.indexOf(nowChoice) + 1];
+          passiveSkillName.noChoice = passiveSkillName.canChoice = passiveSkillName.edChoice = passiveSkillName.fullChoice = 0;
+          passiveSkillName[changeChoice] = 1;
+          // 加分
+          passiveSkillName.nowPoint += 1;
+        }
+
       } else if (passiveSkillName.nowPoint > 0 && passiveSkillName.nowPoint < passiveSkillName.preSkill.length) {
         if (passiveSkillName.nowPoint === passiveSkillName.preSkill.length - 1) {
           // 顯示邏輯 1  2
@@ -905,6 +951,7 @@ export class HomeComponent implements OnInit {
       } else if (passiveSkillName.nowPoint === passiveSkillName.preSkill.length) {
         passiveSkillName.nowPoint = passiveSkillName.nowPoint;
       }
+
     } else {
       nowChoice = this.checkChoice(passiveSkillName);
       if (passiveSkillName.nowPoint > 0 && passiveSkillName.nowPoint < passiveSkillName.preSkill.length) {
@@ -920,12 +967,19 @@ export class HomeComponent implements OnInit {
         }
 
       } else if (passiveSkillName.nowPoint === passiveSkillName.preSkill.length) {
-        // 顯示邏輯
-        changeChoice = stateChoice[stateChoice.indexOf(nowChoice) - 1];
-        passiveSkillName.noChoice = passiveSkillName.canChoice = passiveSkillName.edChoice = passiveSkillName.fullChoice = 0;
-        passiveSkillName[changeChoice] = 1;
-        // 負分
-        passiveSkillName.nowPoint -= 1;
+        if (passiveSkillName.nowPoint === 1 && passiveSkillName.preSkill.length === 1) {
+          passiveSkillName.nowPoint -= 1;
+          passiveSkillName.noChoice = passiveSkillName.canChoice = passiveSkillName.edChoice = passiveSkillName.fullChoice = 0;
+          passiveSkillName['canChoice'] = 1;
+        } else {
+          // 顯示邏輯
+          changeChoice = stateChoice[stateChoice.indexOf(nowChoice) - 1];
+          passiveSkillName.noChoice = passiveSkillName.canChoice = passiveSkillName.edChoice = passiveSkillName.fullChoice = 0;
+          passiveSkillName[changeChoice] = 1;
+          // 負分
+          passiveSkillName.nowPoint -= 1;
+        }
+
       } else if (passiveSkillName.nowPoint === 0) {
 
       }
