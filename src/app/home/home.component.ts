@@ -811,8 +811,8 @@ export class HomeComponent implements OnInit {
   advancedSkill = true;
   totalPoint = 0;
   showId: Observable<string>;
-  urlParams: string ;
-  urlSkillArray;
+  urlParams: string;
+  urlSkillArray: Array<string>;
   constructor(
     private route: ActivatedRoute,
     private router: Router
@@ -831,31 +831,22 @@ export class HomeComponent implements OnInit {
     this.showId = this.route
       .queryParamMap
       .pipe(map(params => params.get('id') || ''));
-    this.firstLoad();
+    // this.firstLoad();
   }
 
   firstLoad() {
-    let IsArray = false;
     let IsLoad = false;
     const IsAdd = true;
-    let InitString = '';
-    let InitArray = [];
 
     this.showId.subscribe((value) => {
-      InitString = value;
+      this.urlSkillArray = [];
+      this.urlSkillArray.push(value);
     });
 
-    IsLoad = (InitString === '') ? false : true ;
-    IsArray = (InitString.indexOf(',') === -1) ? false : true ;
-
-    if (IsArray) {
-      InitArray = InitString.split(',');
-    } else {
-      InitArray.push(InitString) ;
-    }
+    IsLoad = this.urlSkillArray.length !== 0;
 
     if (IsLoad) {
-      InitArray.forEach((skillName) => {
+      this.urlSkillArray.forEach((skillName) => {
         const SkillArray = this.skill.filter((x) => x.name === skillName);
         this.changeSkillState(SkillArray[0], IsAdd);
 
@@ -891,17 +882,33 @@ export class HomeComponent implements OnInit {
   }
 
   addUrl(skillName) {
-    this.router.navigate(['/home'], {queryParams: {id: '123'}});
+    let catchPosition = -1;
+    let IsHad = false;
+    let IsNull = true;
+    let getSkillName = '';
 
-    // let IsHad = false ;
-    // IsHad = (this.urlSkillArray.indexOf(skillName) !== -1) ? true : false;
+    catchPosition = this.urlSkillArray.indexOf(skillName);
+    getSkillName =  this.urlSkillArray[catchPosition];
+    alert(catchPosition);
+    IsHad = catchPosition !== -1;
+    IsNull = this.urlSkillArray.length === 0;
 
-    // alert(IsHad);
-    // if (IsHad) {
-    // } else {
-    //   this.urlSkillArray.push(skillName);
-    //   this.urlParams += skillName + ',';
-    // }
+    // 假如路由網址參數 是空值，就加入，其餘數值就由 IsHad 判別
+    if (IsNull) {
+      this.urlSkillArray.push(skillName);
+    } else {
+      // 添加路由網址參數 假如傳入 值 參數已擁有 就要刪除，假如參數未擁有 就寫入
+      if (IsHad) {
+        this.urlSkillArray = this.urlSkillArray.filter(x => x !== getSkillName );
+      } else {
+        this.urlSkillArray.push(skillName);
+      }
+    }
+
+    let urlSkillString = '';
+    urlSkillString = this.urlSkillArray.toString();
+
+    this.router.navigate(['/home'], { queryParams: { id: urlSkillString } });
 
   }
 

@@ -135,8 +135,8 @@
           [title]="item.name"
           [attr.data-content]="item.content"
           (click)="changeSkill($event.target,item.relation)"
-          [routerLink]="['/home']"  [queryParams]='{id:urlParams}'
           >
+          <!-- [routerLink]="['/home']"  [queryParams]='{id:urlParams}' -->
             {{item.name}}
           </a>
       </div>
