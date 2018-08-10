@@ -837,17 +837,21 @@ export class HomeComponent implements OnInit {
   firstLoad() {
     let IsLoad = false;
     const IsAdd = true;
-    let freezeString = '';
+    let freezeString: string;
     let freezeArray = [];
     this.showId.subscribe((value) => {
       freezeString = value;
     });
-    freezeArray = freezeString.split(',');
+    if (freezeString === '') {
+    } else {
+        freezeArray = freezeString.split(',');
+    }
 
-    this.urlSkillArray = freezeArray.map(x => x);
-    IsLoad = this.urlSkillArray.length !== 0;
+    IsLoad = freezeArray.length !== 0;
 
     if (IsLoad) {
+      this.urlSkillArray = freezeArray.map(x => x);
+
       this.urlSkillArray.forEach((skillName) => {
         const SkillArray = this.skill.filter((x) => x.name === skillName);
         this.changeSkillState(SkillArray[0], IsAdd);
@@ -859,7 +863,6 @@ export class HomeComponent implements OnInit {
         this.changeRankName();
       });
     } else {
-
     }
   }
   showSkill(skillName: HTMLDivElement, svgName: string) {
