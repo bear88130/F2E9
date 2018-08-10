@@ -837,14 +837,14 @@ export class HomeComponent implements OnInit {
   firstLoad() {
     let IsLoad = false;
     const IsAdd = true;
+    let freezeString = '';
     let freezeArray = [];
-
     this.showId.subscribe((value) => {
-      freezeArray.push(value);
+      freezeString = value;
     });
+    freezeArray = freezeString.split(',');
 
     this.urlSkillArray = freezeArray.map(x => x);
-
     IsLoad = this.urlSkillArray.length !== 0;
 
     if (IsLoad) {
@@ -890,7 +890,6 @@ export class HomeComponent implements OnInit {
 
     catchPosition = this.urlSkillArray.indexOf(skillName);
     getSkillName =  this.urlSkillArray[catchPosition];
-    alert(catchPosition);
     IsHad = catchPosition !== -1;
     IsNull = this.urlSkillArray.length === 0;
 
