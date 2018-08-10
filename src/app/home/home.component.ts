@@ -831,17 +831,19 @@ export class HomeComponent implements OnInit {
     this.showId = this.route
       .queryParamMap
       .pipe(map(params => params.get('id') || ''));
-    // this.firstLoad();
+    this.firstLoad();
   }
 
   firstLoad() {
     let IsLoad = false;
     const IsAdd = true;
+    let freezeArray = [];
 
     this.showId.subscribe((value) => {
-      this.urlSkillArray = [];
-      this.urlSkillArray.push(value);
+      freezeArray.push(value);
     });
+
+    this.urlSkillArray = freezeArray.map(x => x);
 
     IsLoad = this.urlSkillArray.length !== 0;
 
@@ -859,7 +861,6 @@ export class HomeComponent implements OnInit {
     } else {
 
     }
-
   }
   showSkill(skillName: HTMLDivElement, svgName: string) {
     this.nowShowSkill = skillName.title;
