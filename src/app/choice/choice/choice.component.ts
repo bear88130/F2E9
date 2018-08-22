@@ -5,9 +5,9 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './choice.component.html',
   styleUrls: ['./choice.component.scss']
 })
+
 export class ChoiceComponent implements OnInit {
 
-  constructor() { }
 
   ngOnInit() {
   }

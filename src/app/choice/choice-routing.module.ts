@@ -4,8 +4,7 @@ import { Routes, RouterModule } from '../../../node_modules/@angular/router';
 import { ChoiceComponent } from './choice/choice.component';
 
 const choiceRoutes: Routes = [
-  { path: 'heroes', redirectTo: '/superheroes' },
-  { path: 'superheroes',  component: ChoiceComponent },
+  { path: 'heroes',  component: ChoiceComponent },
 ];
 
 @NgModule({
